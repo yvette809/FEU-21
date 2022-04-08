@@ -30,16 +30,23 @@ function App() {
 
   // add a new product
 
-  const addProduct = (product)=>{
+  const addProduct = (product) => {
     const id = Math.floor(Math.random() * 100)
     const newProduct = {
-      id:id,
-      product:product,
-      completed:false
+      id: id,
+      product: product,
+      completed: false
     }
     setProducts([...products, newProduct])
- 
- 
+
+  }
+
+  // toggle completed
+
+  const toggleCompleted = (id) => {
+    setProducts(products.map((pdt) => (
+      pdt.id === id ? { ...pdt, completed: !pdt.completed } : pdt
+    )))
   }
 
 
@@ -47,8 +54,8 @@ function App() {
     <>
       <Navigation />
       <Button showForm={showForm} />
-      {showProducts && <AddProduct addProduct={addProduct}/>}
-      <Shopping products={products} onDelete={deleteProduuct} />
+      {showProducts && <AddProduct addProduct={addProduct} />}
+      <Shopping products={products} onDelete={deleteProduuct} onToggle={toggleCompleted} />
     </>
   );
 }
