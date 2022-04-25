@@ -4,11 +4,19 @@ const AddProduct = ({ addProduct }) => {
   const [product, setProduct] = useState("");
   const [completed, setCompleted] = useState(false);
 
+  function setAlert() {
+    return (
+      <div class="alert alert-primary" role="alert">
+        Product cannot be empty!
+      </div>
+    );
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (product === "") {
       alert("product cannot be empty");
-      return
+      return;
     }
 
     addProduct(product, completed);

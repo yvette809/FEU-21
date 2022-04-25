@@ -49,6 +49,11 @@ function App() {
     )))
   }
 
+  // delete all products
+  const deleteAllProducts = () => {
+    setProducts('')
+  }
+
 
   return (
     <>
@@ -56,6 +61,7 @@ function App() {
       <Button showForm={showForm} />
       {showProducts && <AddProduct addProduct={addProduct} />}
       <Shopping products={products} onDelete={deleteProduuct} onToggle={toggleCompleted} />
+      <button className='btn btn-light' onClick={deleteAllProducts}>Clear All</button>
     </>
   );
 }
